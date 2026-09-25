@@ -1,4 +1,4 @@
-# Apprendre le Java
+# Apprendre le Java 🖥️
 
 Petit projet pour apprendre Java et Docker.
 
