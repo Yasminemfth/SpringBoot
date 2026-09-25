@@ -17,3 +17,5 @@ Le système de conventions permet à l'idol de regagner de la popularité. Au-de
 ## À améliorer
 
 - Selon la polémique, l'idol ne devrait pas gagner le même nombre de points de bad buzz.
+- et tester sur acteur/ameliorer
+  
