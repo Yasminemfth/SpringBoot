@@ -1,12 +1,9 @@
 package com.iim.spring_boot.model;
 
 import jakarta.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE) // Idol et Acteur dans la même table
-@DiscriminatorColumn(name = "type_idol")
 public class Idol implements IdolInterface {
 
     @Id
@@ -20,18 +17,28 @@ public class Idol implements IdolInterface {
     int badBuzz;
     int Convention;
 
-    // @Transient = pas enregistré en base
-    // remplie ici pour qu'elle existe même quand JPA utilise le constructeur vide
     @Transient
-    ArrayList<String> hotActions = new ArrayList<>(List.of(
-            "date",
-            "scandale",
-            "polémique",
-            "insulte",
-            "mensonge",
-            "triche",
-            "comportement_controverse"
-    ));
+    Map<String, Integer> hotActions = Map.of(
+            "date",10,
+            "scandale",20,
+            "polémique",15,
+            "insulte",30,
+            "mensonge",25,
+            "triche",25,
+            "comportement_controverse",15
+    );
+
+    @Transient
+    Map<String, Integer> coolActions = Map.of(
+            "don", 7,
+            "concert_gratuit", 25,
+            "charite", 10,
+            "fan_meeting", 15,
+            "benevolat", 10,
+            "excuses_publiques", 10,
+            "collaboration", 5
+    );
+
 
     // constructeur vide obligatoire pour JPA
     protected Idol() {}
@@ -50,34 +57,63 @@ public class Idol implements IdolInterface {
     public int getPopularite() { return this.popularite; }
     public int getBadBuzz() { return this.badBuzz; }
     public int getConvention() { return this.Convention; }
+    /*pour update*/
+    public void setNom(String nom) { this.nom = nom; }
+    public void setCouleurCheveux(String couleurCheveux) { this.couleurCheveux = couleurCheveux; }
+    public void setGenre(String genre) { this.genre = genre; }
+    public void setPopularite(int popularite) { this.popularite = popularite; }
 
-    // si c'est un Idol ou un Acteur
-    public String getType() { return this.getClass().getSimpleName(); }
-
-    public void polemic(String action, int nombre) {
-        if (hotActions.contains(action)) {
-            nombre = 40;
-            this.popularite -= nombre;
-            this.badBuzz += nombre;
+    @Override
+    public void polemic(String action) {
+        if (hotActions.containsKey(action)) {
+            int points = hotActions.get(action);
+            this.popularite -= points;
+            this.badBuzz += points;
         }
     }
 
+    // conventions : on compte, et au-delà du seuil on gagne de la popularité
+    @Override
     public void allerEnConvention(int nombre) {
         this.Convention++;
         augmenterPopularite(nombre, this.popularite, this.Convention);
     }
 
+    // bonnes actions : chaque action rapporte ses propres points
+    @Override
+    public void coolAction(String action) {
+        if (coolActions.containsKey(action)) {
+            int points = coolActions.get(action);
+            this.popularite += points;
+        }
+    }
+
     @Override
     public String HotTake(int badBuzz) {
-        if (badBuzz > 50) {
-            return "Votre artiste est dans un bad buzz";
+        if (badBuzz > 100) {
+            return "Votre artiste est problématique";
+        } else if (badBuzz > 50) {
+            return "Votre artiste est dans un gros bad buzz";
+        } else if (badBuzz > 20) {
+            return "Votre artiste est dans une polémique";
         }
         return "Pas de bad buzz";
     }
 
+    @Override
+    public String CoolTake(int convention) {
+        if (convention > 50) {
+            return "Votre artiste est super cool ^^";
+        } else if (convention > 20) {
+            return "Votre artiste est cool !";
+        } else if (convention > 10) {
+            return "Votre artiste gagne de la popularité";
+        }
+        return "Pas de buzz ou votre artiste n'est pas cool";
+    }
 
     @Override
-    public int getPopularite(int BadBuzz, int Convention) {
+    public int getPopularite(int BadBuzz,int Convention) {
         this.badBuzz = BadBuzz;
         this.Convention = Convention;
         return this.popularite;
