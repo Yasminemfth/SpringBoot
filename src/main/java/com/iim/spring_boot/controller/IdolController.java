@@ -3,7 +3,7 @@ package com.iim.spring_boot.controller;
 import com.iim.spring_boot.model.Idol;
 import com.iim.spring_boot.service.IdolService;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @RestController
@@ -11,7 +11,7 @@ import java.util.List;
 public class IdolController {
 
     private final IdolService idolService;
-
+    @Autowired
     public IdolController(IdolService idolService) {
         this.idolService = idolService;
     }

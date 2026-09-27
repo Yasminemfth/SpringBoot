@@ -5,8 +5,9 @@ import com.iim.spring_boot.model.Relation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import com.iim.spring_boot.model.Acteur;
 import com.iim.spring_boot.model.Idol;
-
+import org.springframework.stereotype.Repository;
 import java.util.Optional;
+@Repository
 // spring génère tt seul le code SQL à partir du nom des méthodes (exemple polemic etc)
 public interface RelationRepository extends JpaRepository<Relation, Long> {
 

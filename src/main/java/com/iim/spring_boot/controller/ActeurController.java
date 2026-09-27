@@ -3,7 +3,7 @@ package com.iim.spring_boot.controller;
 import com.iim.spring_boot.model.Acteur;
 import com.iim.spring_boot.service.ActeurService;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @RestController
@@ -11,7 +11,7 @@ import java.util.List;
 public class ActeurController {
 
     private final ActeurService acteurService;
-
+    @Autowired
     public ActeurController(ActeurService acteurService) {
         this.acteurService = acteurService;
     }

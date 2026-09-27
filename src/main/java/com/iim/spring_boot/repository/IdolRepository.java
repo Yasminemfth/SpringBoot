@@ -3,9 +3,10 @@ package com.iim.spring_boot.repository;
 
 import com.iim.spring_boot.model.Idol;
 import org.springframework.data.jpa.repository.JpaRepository;
-
+import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
+@Repository
 // spring génère tt seul le code SQL à partir du nom des méthodes (exemple polemic etc)
 public interface IdolRepository extends JpaRepository<Idol, Long> {
 

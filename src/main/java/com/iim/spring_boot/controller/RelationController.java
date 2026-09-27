@@ -2,6 +2,7 @@ package com.iim.spring_boot.controller;
 
 import com.iim.spring_boot.model.Relation;
 import com.iim.spring_boot.service.RelationService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
 public class RelationController {
 
     private final RelationService relationService;
-
+    @Autowired
     public RelationController(RelationService relationService) {
         this.relationService = relationService;
     }
