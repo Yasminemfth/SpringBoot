@@ -9,9 +9,9 @@ Création d'un système d'idols et d'acteurs, qui permet de créer une idol en l
 ### Popularité et bad buzz
 
 Si l'idol fait une action présente dans la liste des polémiques, elle perd des points de popularité et gagne du bad buzz. Si son bad buzz dépasse un certain seuil, elle fait ce qu'on appelle une **hot take** : elle est alors en plein bad buzz.
-À l'inverse, si elle fait une bonne action (don, concert gratuit, charité...), elle regagne des points de popularité. Chaque bonne action a son propre poids : un concert gratuit rapporte plus qu'un simple don.
+À l'inverse, si elle fait une bonne action (don, concert gratuit, charité...), elle regagne des points de popularité. Chaque bonne action a son propre "score" : un concert gratuit rapporte plus qu'un simple don.
 
-Les conventions permettent aussi de regagner de la popularité, mais sur la durée : chaque convention ajoute 1 au compteur, et ce n'est qu'après un certain nombre de conventions (10 pour une idol, 5 pour un acteur) que chacune rapporte des points.
+Les conventions permettent aussi de regagner de la popularité, mais sur la durée : chaque convention ajoute 1 au compteur, et ce n'est qu'après un certain nombre de conventions (10 pour une idol, 5 pour un acteur) que chacune rapporte des points de popularité.
 
 ### Conventions
 
