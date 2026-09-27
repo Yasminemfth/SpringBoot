@@ -9,6 +9,9 @@ Création d'un système d'idols et d'acteurs, qui permet de créer une idol en l
 ### Popularité et bad buzz
 
 Si l'idol fait une action présente dans la liste des polémiques, elle perd des points de popularité et gagne du bad buzz. Si son bad buzz dépasse un certain seuil, elle fait ce qu'on appelle une **hot take** : elle est alors en plein bad buzz.
+À l'inverse, si elle fait une bonne action (don, concert gratuit, charité...), elle regagne des points de popularité. Chaque bonne action a son propre poids : un concert gratuit rapporte plus qu'un simple don.
+
+Les conventions permettent aussi de regagner de la popularité, mais sur la durée : chaque convention ajoute 1 au compteur, et ce n'est qu'après un certain nombre de conventions (10 pour une idol, 5 pour un acteur) que chacune rapporte des points.
 
 ### Conventions
 
@@ -16,10 +19,11 @@ Le système de conventions permet à l'idol de regagner de la popularité. Au-de
 
 ## Ce que j'ai ajouté
 
-- **Des poids différents pour chaque polémique** : un  scandalte de `date` coûte 10 points, une `insulte` 30.
+- **Des poids différents pour chaque polémique** : un `date` coûte 10 points, une `insulte` 30.
 - **Des niveaux de bad buzz** : selon le score, l'idol est en polémique, en gros bad buzz ou problématique.
 - **Les bonnes actions** (dons, concerts gratuits, charité...) pour regagner de la popularité, et le **cool take** qui dit à quel point l'artiste est cool.
-- **Les acteurs**, séparés des idols, avec un film en plus. Ils partagent la même interface mais réagissent différemment : un acteur gagne en populairté dès la 6ᵉ, une idol à partir de la 11ᵉ.
+- **Un compteur de conventions** : chaque convention ajoute 1 au compteur. Contrairement aux bonnes actions, qui augmentent la popularité tout de suite, les conventions ne rapportent de la popularité qu'au-delà d'un seuil : 10 conventions pour une idol, 5 pour un acteur.
+- **Les acteurs**, séparés des idols, avec un film en plus. Ils partagent la même interface mais réagissent différemment, par exemple avec un seuil de conventions plus bas.
 - **Les relations** entre une idol et un acteur : elles démarrent neutres (score 0), montent avec les collaborations et baissent avec les clashs. Selon le score : Ennemis, Tendus, Neutre, Amis ou Proches.
 - **La modification** d'une idol ou d'un acteur (PUT).
 - **Une base PostgreSQL** avec Spring Data JPA : les données ne sont plus perdues au redémarrage.
@@ -34,37 +38,7 @@ Avec Docker Desktop ouvert, à la racine du projet :
 
 ## URL pour tester
 
-Les routes en **POST** et **PUT** se testent avec Postman.
-
-### Idol
-
-| Verbe | URL | Rôle |
-|---|---|---|
-| GET | `/idol` | Lister les idols |
-| GET | `/idol/{nom}` | Voir une idol |
-| POST | `/idol?nom=Ruby&couleurCheveux=blond&genre=F` | Créer une idol |
-| PUT | `/idol?id=1&couleurCheveux=rose` | Modifier une idol |
-| POST | `/idol/{nom}/polemic?action=scandale` | Faire une polémique |
-| POST | `/idol/{nom}/coolaction?action=charite` | Faire une bonne action |
-| POST | `/idol/{nom}/convention` | Aller en convention |
-| GET | `/idol/{nom}/hottake` | Niveau de bad buzz |
-| GET | `/idol/{nom}/cooltake` | Niveau de coolitude |
-
-### Acteur
-
-Mêmes routes que l'idol, en remplaçant `/idol` par `/acteur`. À la création, on peut ajouter un film :
-
-`POST /acteur?nom=Kaname&couleurCheveux=noir&genre=H&film=Oshi`
-
-### Relation
-
-| Verbe | URL | Rôle |
-|---|---|---|
-| GET | `/relation` | Lister les relations |
-| GET | `/relation/{nomIdol}/{nomActeur}` | Voir une relation |
-| POST | `/relation?nomIdol=Ruby&nomActeur=Kaname` | Créer une relation |
-| POST | `/relation/collaboration?nomIdol=Ruby&nomActeur=Kaname` | Score +15 |
-| POST | `/relation/clash?nomIdol=Ruby&nomActeur=Kaname` | Score -20 |
+Les routes en **POST** et **PUT** se testent avec Postman. Toutes les requêtes sont dans le fichier `Idol Generator.postman_collection.json`, à importer dans Postman.
 
 ### Actions disponibles
 
@@ -72,7 +46,7 @@ Mêmes routes que l'idol, en remplaçant `/idol` par `/acteur`. À la création,
 
 **Bonnes actions** : `don`, `concert_gratuit`, `charite`, `fan_meeting`, `benevolat`, `excuses_publiques`, `collaboration`
 
-## À améliorer
+## À améliorer (dans le futur)
 
 - Ajouter la suppression (DELETE)
 - Contagion du bad buzz : quand l'un fait une polémique, l'autre en subit une partie selon leur relation
