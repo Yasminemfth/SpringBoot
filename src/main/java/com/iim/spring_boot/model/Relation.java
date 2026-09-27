@@ -34,6 +34,7 @@ public class Relation {
     public Acteur getActeur() { return this.acteur; }
     public int getScore() { return this.score; }
 
+    //leur score augment si il font une collab ou baisse si y'a clash (cf relation controller)
     public void augmenter(int points) {
         this.score += points;
     }

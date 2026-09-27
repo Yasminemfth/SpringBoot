@@ -126,6 +126,7 @@ public class Idol implements IdolInterface {
         }
     }
 
+    // par rapport a bonneaction qui augmente direct la popularite sans besoin de seuil , convention augment la popularité uniquement si c'est au dessus de 10
     @Override
     public void augmenterPopularite(int nombre, int Popularite, int Convention) {
         if (Convention > 10) {

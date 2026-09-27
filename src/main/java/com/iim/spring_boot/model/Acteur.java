@@ -77,7 +77,7 @@ public class Acteur implements IdolInterface {
         }
     }
 
-    // conventions : on compte, et au-delà du seuil on gagne de la popularité
+    // conventions : on compte, et au-delà du seuil on gagne de la popularité (par rapport a bonneaction qui augmente direct la popularite sans besoin de seuil , convention augment la popularité uniquement au dessus de 10)
     @Override
     public void allerEnConvention(int nombre) {
         this.Convention++;
@@ -131,6 +131,8 @@ public class Acteur implements IdolInterface {
         }
     }
 
+
+    // par rapport a bonneaction qui augmente direct la popularite sans besoin de seuil , convention augment la popularité uniquement si c'est au dessus de 5
     // l'acteur gagne plus vite en convention (5 a la place de 10)
     @Override
     public void augmenterPopularite(int nombre, int Popularite, int Convention) {

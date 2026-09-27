@@ -1,0 +1,575 @@
+{
+  "info": {
+    "_postman_id": "e8e658f2-d179-46da-aecd-78facb3b9451",
+    "name": "Idol Generator",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "50255369",
+    "_collection_link": "https://go.postman.co/collection/50255369-e8e658f2-d179-46da-aecd-78facb3b9451?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Créer une idol",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {\n    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\n});\n"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": ""
+        },
+        "description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+      },
+      "response": []
+    },
+    {
+      "name": "Lister les idols",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/idol",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "idol"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "voir une idol",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Modifier une idol",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/idol?id=2&nom=Leila",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "idol"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "2"
+            },
+            {
+              "key": "nom",
+              "value": "Leila"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Polémique Idol",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/idol/ruby/polemic?action=scandale",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "idol",
+            "ruby",
+            "polemic"
+          ],
+          "query": [
+            {
+              "key": "action",
+              "value": "scandale"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Bonne action idol",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/idol/ruby/coolaction?action=charite",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "idol",
+            "ruby",
+            "coolaction"
+          ],
+          "query": [
+            {
+              "key": "action",
+              "value": "charite"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Voir hottake idol",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/idol/ruby/hottake",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "idol",
+            "ruby",
+            "hottake"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "voir CoolTake Idol",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/idol/ruby/cooltake",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "idol",
+            "ruby",
+            "cooltake"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "convention idol",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/idol/ruby/convention",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "idol",
+            "ruby",
+            "convention"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Créer un  acteur",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/acteur?nom=Kaname&couleurCheveux=noir&genre=H&film=Oshi",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "acteur"
+          ],
+          "query": [
+            {
+              "key": "nom",
+              "value": "Kaname"
+            },
+            {
+              "key": "couleurCheveux",
+              "value": "noir"
+            },
+            {
+              "key": "genre",
+              "value": "H"
+            },
+            {
+              "key": "film",
+              "value": "Oshi"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "lister les acteurs",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "voir un acteur",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/acteur/kaname",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "acteur",
+            "kaname"
+          ]
+        },
+        "description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+      },
+      "response": []
+    },
+    {
+      "name": "Modifier un acteur",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/acteur?id=1&nom=kaname",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "acteur"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "1"
+            },
+            {
+              "key": "nom",
+              "value": "kaname"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Polémique Acteur",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/acteur/kaname/polemic?action=insulte",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "acteur",
+            "kaname",
+            "polemic"
+          ],
+          "query": [
+            {
+              "key": "action",
+              "value": "insulte"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Bonne Action Acteur",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/acteur/kaname/coolaction?action=don",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "acteur",
+            "kaname",
+            "coolaction"
+          ],
+          "query": [
+            {
+              "key": "action",
+              "value": "don"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Convention Acteur",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/acteur/kaname/convention",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "acteur",
+            "kaname",
+            "convention"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "voir Cooltake acteur",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/acteur/kaname/cooltake",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "acteur",
+            "kaname",
+            "cooltake"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "voir hottake acteur",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/acteur/kaname/hottake",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "acteur",
+            "kaname",
+            "hottake"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Créer une relation entre idol et Acteur",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/relation?nomIdol=Ruby&nomActeur=kaname",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "relation"
+          ],
+          "query": [
+            {
+              "key": "nomIdol",
+              "value": "Ruby"
+            },
+            {
+              "key": "nomActeur",
+              "value": "kaname"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Lister les relations",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/relation",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "relation"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "voir une relation",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/relation/Ruby/Kaname",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "relation",
+            "Ruby",
+            "Kaname"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Collaboration pour augmenter relation",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/relation/collaboration?nomIdol=Ruby&nomActeur=Kaname",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "relation",
+            "collaboration"
+          ],
+          "query": [
+            {
+              "key": "nomIdol",
+              "value": "Ruby"
+            },
+            {
+              "key": "nomActeur",
+              "value": "Kaname"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "clash pour baisser la relation",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/relation/clash?nomIdol=Ruby&nomActeur=Kaname",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "relation",
+            "clash"
+          ],
+          "query": [
+            {
+              "key": "nomIdol",
+              "value": "Ruby"
+            },
+            {
+              "key": "nomActeur",
+              "value": "Kaname"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

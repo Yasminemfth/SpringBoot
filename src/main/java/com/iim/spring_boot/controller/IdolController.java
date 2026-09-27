@@ -2,7 +2,6 @@ package com.iim.spring_boot.controller;
 
 import com.iim.spring_boot.model.Idol;
 import com.iim.spring_boot.service.IdolService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,45 +29,10 @@ public class IdolController {
 
     // une idol précise par nom
     @GetMapping("/{nom}")
-    public ResponseEntity<Idol> getOne(@PathVariable String nom) {
-        Idol idol = idolService.findByNom(nom);
-        if (idol == null) {
-            return ResponseEntity.notFound().build(); // 404
-        }
-        return ResponseEntity.ok(idol); // 200
+    public Idol getOne(@PathVariable String nom) {
+        return idolService.findByNom(nom);
     }
 
-
-
-
-    @PostMapping("/{nom}/polemic")
-    public ResponseEntity<Idol> polemic(@PathVariable String nom,
-                                        @RequestParam String action) {
-        Idol idol = idolService.polemic(nom, action);
-        if (idol == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(idol);
-    }
-
-    @PostMapping("/{nom}/convention")
-    public ResponseEntity<Idol> convention(@PathVariable String nom,
-                                           @RequestParam(defaultValue = "10") int nombre) {
-        Idol idol = idolService.convention(nom, nombre);
-        if (idol == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(idol);
-    }
-
-    @GetMapping("/{nom}/hottake")
-    public ResponseEntity<String> hotTake(@PathVariable String nom) {
-        String result = idolService.hotTake(nom);
-        if (result == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(result);
-    }
     @PostMapping
     public Idol create(@RequestParam String nom,
                        @RequestParam String couleurCheveux,
@@ -84,24 +48,33 @@ public class IdolController {
                        @RequestParam(required = false) String genre,
                        @RequestParam(required = false) Integer popularite) {
         return idolService.update(id, nom, couleurCheveux, genre, popularite);
-
     }
+
+    @PostMapping("/{nom}/polemic")
+    public Idol polemic(@PathVariable String nom,
+                        @RequestParam String action) {
+        return idolService.polemic(nom, action);
+    }
+
+    @PostMapping("/{nom}/convention")
+    public Idol convention(@PathVariable String nom,
+                           @RequestParam(defaultValue = "10") int nombre) {
+        return idolService.convention(nom, nombre);
+    }
+
+    @GetMapping("/{nom}/hottake")
+    public String hotTake(@PathVariable String nom) {
+        return idolService.hotTake(nom);
+    }
+
     @PostMapping("/{nom}/coolaction")
-    public ResponseEntity<Idol> coolAction(@PathVariable String nom,
-                                           @RequestParam String action) {
-        Idol idol = idolService.coolAction(nom, action);
-        if (idol == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(idol);
+    public Idol coolAction(@PathVariable String nom,
+                           @RequestParam String action) {
+        return idolService.coolAction(nom, action);
     }
 
     @GetMapping("/{nom}/cooltake")
-    public ResponseEntity<String> coolTake(@PathVariable String nom) {
-        String result = idolService.coolTake(nom);
-        if (result == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(result);
+    public String coolTake(@PathVariable String nom) {
+        return idolService.coolTake(nom);
     }
 }
